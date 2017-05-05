@@ -1,7 +1,12 @@
 'use strict';
 
+// TODO: split out the controllers and services
+
 angular.module('app', []);
 
+
+
+// Services
 angular.module('app')
     .service('productService', productService);
 
@@ -34,6 +39,9 @@ function productService($http, $q) {
     };
 }
 
+
+
+// Controllers
 angular.module('app')
     .controller('productController', productController);
 

@@ -6,8 +6,6 @@ var app         = express();
 var router      = express.Router();
 var Product = require('./models/product');
 
-debugger;
-
 // Database
 require('./database');
 require('./seed');
@@ -16,6 +14,8 @@ require('./seed');
 app.use('/', express.static('public'));
 app.use(parser.json());
 app.use('/api', router);
+
+// TODO: split out the routes to another file
 
 router.get('/products', function(req, res) {
     Product.find({}, function(err, products) {
