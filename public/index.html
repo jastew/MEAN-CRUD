@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="productController">
+        <h1>{{title}}</h1>
+
+        <input type="text" ng-model="name" placeholder="name">
+        <input type="text" ng-model="price" placeholder="price">
+        <button ng-click="addProduct(name, price)" ng-disabled="!name">Add Product</button>
+
+        <ul>
+            <li ng-repeat="product in products">
+                <span ng-hide="editing_name" ng-click="editing_name=true">{{product.name}}</span>
+                <input ng-show="editing_name" ng-blur="editing_name=false" type="text" ng-model="product.name">
+
+                <span ng-hide="editing_price" ng-click="editing_price=true"> - {{product.price}}</span>
+                <input ng-show="editing_price" ng-blur="editing_price=false" type="text" ng-model="product.price">
+            </li>
+        </ul>
+
+        <button ng-click="saveProducts()">Save Products</button>
+    </div>
+
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/app/app.js"></script>
+</body>
+</html>
